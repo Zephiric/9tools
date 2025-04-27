@@ -309,6 +309,6 @@ class ItemEditScreen(
     }
 
     override fun close() {
-        mc.setScreen(null)
+        mc.setScreen(CollectorScreen())
     }
 }
