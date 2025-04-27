@@ -47,7 +47,7 @@ object SettingsManager {
         val skipCustomData: Boolean = false,
         val skipWritableBookContent: Boolean = false,
         val skipContainerData: Boolean = false,
-        val saveDefaultComponents: Boolean = false,
+        val saveDefaultComponents: Boolean = true,
         val defaultViewType: String = ViewType.GRID.name
     )
 

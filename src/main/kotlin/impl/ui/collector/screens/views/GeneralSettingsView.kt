@@ -88,7 +88,7 @@ class GeneralSettingsView(
         components += CollectorToggleButton(
             x = x,
             y = y + 50,
-            width = width * 0.4,
+            width = 30.0,
             label = "Show Tooltips",
             description = "Show detailed item tooltips",
             state = SettingsManager.showDetailedTooltips,
@@ -101,9 +101,9 @@ class GeneralSettingsView(
         components += CollectorToggleButton(
             x = x,
             y = y + 100,
-            width = width * 0.4,
+            width = 30.0,
             label = "Save Default Components",
-            description = "Include default components in saved JSON even if unchanged",
+            description = "Include default components in saved JSON even if unchanged (i suggest keeping this on)",
             state = SettingsManager.saveDefaultComponents,
             onChange = { enabled ->
                 SettingsManager.saveDefaultComponents = enabled
