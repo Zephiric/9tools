@@ -1,41 +1,35 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "ninetools-collector",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "9Tools Collector",
+	"description": "A collection management system for Minecraft items and assets",
 	"authors": [
-		"Me!"
+		"Your Name Here"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "Your website URL",
+		"sources": "Your GitHub repository URL"
 	},
-	"license": "CC0-1.0",
+	"license": "Your License",
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"win.ninegang.ninetools.CollectorMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"win.ninegang.ninetools.CollectorModClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"ninetools-collector.mixins.json"
 	],
+	"accessWidener": "ninetools-collector.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.16.10",
-		"minecraft": "~1.21.5",
+		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
