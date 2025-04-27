@@ -34,23 +34,6 @@ class GeneralSettingsView(
                     "Large (1.25x)" -> 1.25
                     "Extra Large (1.5x)" -> 1.5
                     "Huge (2.0x)" -> 2.0
-                    "SCROLLINGTEST323" -> 1.0
-                    "TEST323232" -> 1.0
-                    "TEST12131" -> 1.0
-                    "TEST|" -> 1.0
-                    "TEST234" -> 1.0
-                    "TEST11" -> 1.0
-                    "TEST22" -> 1.0
-                    "TEST33" -> 1.0
-                    "TEST44" -> 1.0
-                    "TEST55" -> 1.0
-                    "TEST66" -> 1.0
-                    "TEST77" -> 1.0
-                    "TEST88" -> 1.0
-                    "TEST99" -> 1.0
-                    "TEST00" -> 1.0
-                    "TEST1263" -> 1.0
-                    "TEST00000" -> 1.0
                     else -> 1.0
                 }
                 SettingsManager.uiScale = scale
@@ -65,23 +48,6 @@ class GeneralSettingsView(
                 "Large (1.25x)",
                 "Extra Large (1.5x)",
                 "Huge (2.0x)",
-                "SCROLLINGTEST323",
-                "TEST323232",
-                "TEST12131",
-                "TEST|",
-                "TEST234",
-                "TEST11",
-                "TEST22",
-                "TEST33",
-                "TEST44",
-                "TEST55",
-                "TEST66",
-                "TEST77",
-                "TEST88",
-                "TEST99",
-                "TEST00",
-                "TEST1263",
-                "TEST00000",
             )
         }
 

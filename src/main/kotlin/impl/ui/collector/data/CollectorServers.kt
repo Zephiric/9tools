@@ -75,8 +75,8 @@ object CollectorServers {
         )
         servers.add(
             ServerEntry(
-                tag = "anarchardia",
-                serverIps = listOf("anarchardia.org:25565")
+                tag = "anarchadia",
+                serverIps = listOf("anarchadia.org:25565")
             )
         )
     }

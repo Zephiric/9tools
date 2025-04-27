@@ -74,7 +74,7 @@ object CollectorTags {
             tagGroups.add(
                 TagGroup(
                     group = "servers",
-                    tags = listOf("9b9t", "2b2t", "constantiam", "anarchardia"),
+                    tags = listOf("9b9t", "2b2t", "constantiam", "anarchadia"),
                     isCore = true
                 )
             )
@@ -96,7 +96,7 @@ object CollectorTags {
         tagGroups.add(
             TagGroup(
                 group = "servers",
-                tags = listOf("9b9t", "2b2t", "constantiam", "anarchardia"),
+                tags = listOf("9b9t", "2b2t", "constantiam", "anarchadia"),
                 isCore = true
             )
         )
