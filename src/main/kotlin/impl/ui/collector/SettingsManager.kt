@@ -23,7 +23,7 @@ object SettingsManager {
     var skipWritableBookContent = false
     var skipContainerData = false
     var defaultViewType = ViewType.GRID
-    var saveDefaultComponents = false
+    var saveDefaultComponents = true
 
     private val screenPositions = mutableMapOf<String, ScreenPosition>()
 

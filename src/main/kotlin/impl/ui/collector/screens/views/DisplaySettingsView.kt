@@ -9,6 +9,7 @@ import win.ninegang.ninetools.compat.util.Wrapper.ninehack
 import impl.ui.collector.data.CollectorMaps
 import impl.ui.collector.UIComponent
 import impl.ui.collector.SettingsManager
+import impl.ui.collector.screens.TestScreen
 import impl.ui.collector.utils.CollectorButton
 import impl.ui.collector.utils.CollectorSlider
 
@@ -42,13 +43,25 @@ class DisplaySettingsView(
         )
 
         components += CollectorButton(
-            x = x + 20,
-            y = y + 70,
-            width = 150.0,
+            x = x,
+            y = y + 185,
+            width = 160.0,
             height = 20.0,
             text = "Scan Maps in Render Distance",
             onClickAction = { scanForMapsInRenderDistance() },
             type = CollectorButton.ButtonType.POSITIVE
+        )
+
+        components += CollectorButton(
+            x = x,
+            y = y + 210,
+            width = width * 0.4,
+            height = 20.0,
+            text = "Open Map Screen",
+            onClickAction = {
+                mc.setScreen(TestScreen())
+            },
+            type = CollectorButton.ButtonType.HIGHLIGHT
         )
     }
 

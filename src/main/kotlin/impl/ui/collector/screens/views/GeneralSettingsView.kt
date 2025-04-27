@@ -76,18 +76,6 @@ class GeneralSettingsView(
                 SettingsManager.saveSettings()
             }
         )
-
-        components += CollectorButton(
-            x = x,
-            y = y + 150,
-            width = width * 0.4,
-            height = 20.0,
-            text = "Open Test Screen",
-            onClickAction = {
-                mc.setScreen(TestScreen())
-            },
-            type = CollectorButton.ButtonType.HIGHLIGHT
-        )
     }
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
