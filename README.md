@@ -1,5 +1,7 @@
 i have no clue wtf im doing
 
+use minecraft keybind system to set open gui keybind
+
 requires fabric api and fabric language kotlin mods
 
 
