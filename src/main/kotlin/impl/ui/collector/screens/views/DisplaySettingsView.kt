@@ -26,8 +26,8 @@ class DisplaySettingsView(
 
     init {
         components += CollectorSlider(
-            x = x + 20,
-            y = y + 30,
+            x = x,
+            y = y,
             width = width * 0.5,
             height = 20.0,
             label = "Items per Page:",
@@ -116,13 +116,6 @@ class DisplaySettingsView(
     override fun getChildComponents(): List<UIComponent> = components
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        context.drawTextWithShadow(
-            mc.textRenderer,
-            "Display Settings",
-            (x + 2).toInt(),
-            (y + 8).toInt(),
-            0xFFFFFF
-        )
 
         components.forEach { it.render(context, mouseX, mouseY, delta) }
 
