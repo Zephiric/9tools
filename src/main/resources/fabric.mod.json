@@ -5,13 +5,13 @@
 	"name": "9Tools Collector",
 	"description": "A collection management system for Minecraft items and assets",
 	"authors": [
-		"Your Name Here"
+		"Zephiric & Mineral"
 	],
 	"contact": {
-		"homepage": "Your website URL",
-		"sources": "Your GitHub repository URL"
+		"homepage": "https://www.youtube.com/watch?v=j-gpzKsk_0A&",
+		"sources": "https://github.com/Zephiric/9tools"
 	},
-	"license": "Your License",
+	"license": "hi",
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
