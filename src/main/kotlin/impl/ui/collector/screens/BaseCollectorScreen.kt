@@ -20,15 +20,15 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
 
     protected val tooltipHandler = TooltipHandler
 
-    // List of UIComponents
+
     protected val components = mutableListOf<UIComponent>()
 
-    // Window dragging state
+
     protected var isWindowDragging = false
     protected var dragOffsetX = 0.0
     protected var dragOffsetY = 0.0
 
-    // Abstract screen positioning
+
     protected abstract fun getScreenX(): Double
     protected abstract fun getScreenY(): Double
     protected abstract fun getScreenWidth(): Double
@@ -45,17 +45,17 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         }
     }
 
-    // ------------------------------------------------------------------------
-    //                         MOUSE
-    // ------------------------------------------------------------------------
+
+
+
     override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
-        // We only care about left-click for window dragging
+
         if (button == 0) {
             val scale = UIScaling.getScale()
             val scaledMouseX = mouseX / scale
             val scaledMouseY = mouseY / scale
 
-            // Check if user is clicking the title bar to drag the window
+
             val screenX = getScreenX()
             val screenY = getScreenY()
             val screenWidth = getScreenWidth()
@@ -68,7 +68,7 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
                 return true
             }
 
-            // If not dragging the window, pass the click to UIComponents in descending priority
+
             components
                 .sortedByDescending { it.priority }
                 .forEach { component ->
@@ -107,7 +107,7 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
 
             updateScreenPosition(clampedX, clampedY)
 
-            // Save the new position
+
             SettingsManager.saveScreenPosition(getScreenIdentifier(), clampedX, clampedY)
 
             return true
@@ -125,7 +125,7 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
     }
 
     override fun mouseReleased(mouseX: Double, mouseY: Double, button: Int): Boolean {
-        // window-dragging logic if any :Derp:
+
         if (isWindowDragging && button == 0) {
             isWindowDragging = false
             return true
@@ -135,7 +135,7 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         val scaledX = mouseX / scale
         val scaledY = mouseY / scale
 
-        // Let components handle onMouseRelease in descending priority
+
         components
             .sortedByDescending { it.priority }
             .forEach { comp ->
@@ -157,7 +157,7 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         val scaledMouseX = mouseX / scale
         val scaledMouseY = mouseY / scale
 
-        // Pass scroll to components in priority order
+
         components
             .sortedByDescending { it.priority }
             .forEach { component ->
@@ -169,9 +169,9 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount)
     }
 
-    // ------------------------------------------------------------------------
-    //  KEY
-    // ------------------------------------------------------------------------
+
+
+
     override fun keyReleased(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
         components
             .sortedByDescending { it.priority }
@@ -195,7 +195,7 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
     }
 
     override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
-        // Pass key events to components
+
         components
             .sortedByDescending { it.priority }
             .forEach { component ->
@@ -206,9 +206,9 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         return super.keyPressed(keyCode, scanCode, modifiers)
     }
 
-    // ------------------------------------------------------------------------
-    //                         RENDER
-    // ------------------------------------------------------------------------
+
+
+
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
 
         context.matrices.push()
@@ -239,13 +239,13 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
 
 
     protected open fun renderScaled(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        // Render a window background for the collector screen.
+
         renderBackground(context, getScreenX(), getScreenY(), getScreenWidth(), getScreenHeight())
 
-        // Render title bar
+
         renderTitleBar(context, getScreenX(), getScreenY(), getScreenWidth(), "Collector Screen")
 
-        // Render all UIComponents
+
         components.sortedBy { it.priority }.forEach { component ->
             component.render(context, mouseX, mouseY, delta)
         }

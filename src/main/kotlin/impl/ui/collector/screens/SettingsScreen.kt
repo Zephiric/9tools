@@ -25,7 +25,7 @@ class SettingsScreen : BaseCollectorScreen(Text.literal("Settings")) {
     override fun getScreenHeight() = screenHeight
     override fun getScreenIdentifier(): String = "settings_screen"
 
-    // Layout management, Trying to optimize and prepare for the ability to add view classes with minimal code repetition and without needing to edit parent classes
+
     inner class SettingsLayout {
         private val categories = listOf("General", "Display", "Performance", "Advanced")
         private val categoryButtons = categories.mapIndexed { index, category ->
@@ -80,7 +80,7 @@ class SettingsScreen : BaseCollectorScreen(Text.literal("Settings")) {
         }
     }
 
-    // View Registry, setup/testing for the component editor UI system
+
     private object ViewRegistry {
         private val views = mutableMapOf<String, (SettingsLayout) -> UIComponent>()
 
@@ -102,7 +102,7 @@ class SettingsScreen : BaseCollectorScreen(Text.literal("Settings")) {
                 )
             }
 
-            // NEW
+
             registerView("Performance") { layout ->
                 PerformanceSettingsView(
                     x = layout.contentX,
@@ -135,7 +135,7 @@ class SettingsScreen : BaseCollectorScreen(Text.literal("Settings")) {
 
     init {
         loadSavedPosition()
-        selectCategory("General")  // Default view
+        selectCategory("General")
     }
 
     private fun selectCategory(category: String) {

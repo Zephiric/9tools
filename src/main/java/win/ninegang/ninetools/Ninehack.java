@@ -16,14 +16,14 @@ public class Ninehack {
     static {
         INSTANCE = new Ninehack();
 
-        // Create the directory if it doesn't exist
+
         if (!DIRECTORY.exists()) {
             DIRECTORY.mkdirs();
         }
     }
 
     public void logChat(String message) {
-        // Simple implementation that logs to console instead of chat
+
         logger.info(message);
     }
 }

@@ -7,7 +7,7 @@ import impl.ui.collector.components.EditorRegistry
 import impl.ui.collector.utils.CollectorSlider
 import impl.ui.collector.utils.CollectorToggleButton
 
-// Would benefit from a more precise numerical input method. Middle click the slider value to manually change them is maybe smart
+
 
 class CustomModelDataEditor(
     registry: EditorRegistry,

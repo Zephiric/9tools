@@ -168,7 +168,7 @@ public class Engine2d implements Wrapper {
             }
         }
 
-        // last vertex connecting back to start
+
         float[] current = roundedCache[0];
         float rad = current[2];
         buffer.vertex(matrix, current[0], current[1] + rad, 0.0F)

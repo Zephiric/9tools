@@ -55,9 +55,9 @@ object CollectorJson {
     }
 
     private fun isReorderingEnabled(): Boolean {
-        // Allow the user to turn off reordering in the settings for performance reasons
-        // Maybe also allow users to manage what gets reordered and maybe even the order itself
-        return true // TODO: Replace with SettingsManager.enableJsonReordering
+
+
+        return true
     }
 
     fun reorderFields(originalObj: JsonObject, fieldOrder: List<String>): JsonObject {

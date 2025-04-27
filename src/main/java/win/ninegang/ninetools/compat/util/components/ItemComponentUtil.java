@@ -37,7 +37,7 @@ public class ItemComponentUtil {
      */
     public static List<Component<?>> getAllComponents(ItemStack itemStack) {
         if (itemStack == null || itemStack.isEmpty()) {
-            return Collections.emptyList(); // Return empty list if ItemStack is empty or null
+            return Collections.emptyList();
         }
 
         ComponentMap componentMap = itemStack.getComponents();
@@ -111,16 +111,16 @@ public class ItemComponentUtil {
             String componentName = getComponentName(type);
             Object value = component.value();
 
-            // Encode the component's value using its codec
+
             Codec<Object> codec = (Codec<Object>) type.getCodec();
             if (codec != null) {
-                // Encode the value into an NbtElement
+
                 DataResult<NbtElement> encodedResult = codec.encodeStart(NbtOps.INSTANCE, value);
                 if (encodedResult.result().isPresent()) {
                     NbtElement encoded = encodedResult.result().get();
                     nbt.put(componentName, encoded);
                 } else {
-                    // Handle encoding errors if necessary
+
                     encodedResult.error().ifPresent(error -> {
                         LOGGER.warn("Failed to encode component '{}': {}", componentName, error.message());
                     });
@@ -155,7 +155,7 @@ public class ItemComponentUtil {
                         Object value = decodedResult.result().get().getFirst();
                         builder.add((ComponentType<Object>) type, value);
                     } else {
-                        // Handle decoding errors if necessary
+
                         decodedResult.error().ifPresent(error -> {
                             LOGGER.warn("Failed to decode component '{}': {}", key, error.message());
                         });
@@ -223,7 +223,7 @@ public class ItemComponentUtil {
                         dataComponentTypes.add(type);
                     }
                 } catch (IllegalAccessException e) {
-                    // Replace printStackTrace with logging
+
                     LOGGER.error("Failed to access DataComponentType field '{}'", field.getName(), e);
                 }
             }
@@ -265,7 +265,7 @@ public class ItemComponentUtil {
             T typedValue = (T) value;
             itemStack.set(typedType, typedValue);
         } catch (ClassCastException e) {
-            // Handle the error as needed, e.g., log a warning
+
             System.err.println("Type mismatch when applying component change: " + e.getMessage());
         }
     }
@@ -334,7 +334,7 @@ public class ItemComponentUtil {
             Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {
                 if (Modifier.isStatic(field.getModifiers())) {
-                    continue; // Skip static fields
+                    continue;
                 }
                 field.setAccessible(true);
                 try {

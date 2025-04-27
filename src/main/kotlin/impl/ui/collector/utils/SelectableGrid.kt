@@ -86,10 +86,10 @@ class SelectableGrid(
 
             val bgColor = when {
                 !button.item.isSelectable -> Color(0.2f, 0.2f, 0.2f, 0.5f)
-                isHovered -> Color(0.3f, 0.5f, 0.9f, 0.4f)  // Moved hover check up
+                isHovered -> Color(0.3f, 0.5f, 0.9f, 0.4f)
                 activeItems.contains(button.item.name) -> Color(0.3f, 0.5f, 0.9f, 0.8f)
                 else -> if (button.item.isSelectable) {
-                    Color(0.3f, 0.5f, 0.9f, 0.2f)  // Blue test tint for now
+                    Color(0.3f, 0.5f, 0.9f, 0.2f)
                 } else {
                     Color(0.2f, 0.2f, 0.2f, 0.5f)
                 }

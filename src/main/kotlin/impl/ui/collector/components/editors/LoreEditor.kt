@@ -55,7 +55,7 @@ class LoreEditor(
         ) {}
         textBox.setLabelPosition(0.0, -15.0)
 
-        // Add button
+
         addButton = CollectorButton.createAddButton(
             x = x + width - 65.0,
             y = y + 22.0

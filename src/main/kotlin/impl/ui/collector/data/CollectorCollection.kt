@@ -226,7 +226,7 @@ data class CollectorCollection(
             val gson = GsonBuilder().setPrettyPrinting().create()
             val jsonObject = gson.fromJson(gson.toJson(result.result().get()), JsonObject::class.java)
 
-            //May be killing performance
+
             val orderedJson = CollectorJson.reorderFields(jsonObject, CollectorJson.FieldOrder.COLLECTION)
 
             metadataFile.writeText(gson.toJson(orderedJson))
@@ -267,7 +267,7 @@ data class CollectorCollection(
         val sanitizedName = sanitizeFileName(item.customName)
         val itemFile = itemsDir / "${sanitizedName}_${index}.json"
         val gson = GsonBuilder().setPrettyPrinting().create()
-        // Temporarily disable light mode to ensure we save all components because my system is scuffed af
+
         item.setLightMode(false)
         itemFile.writeText(gson.toJson(item.toJson()))
         item.setLightMode(true)
@@ -417,8 +417,8 @@ data class CollectorCollection(
     }
 
     enum class LoadType {
-        FULL,      // Load everything
-        LIGHT,     // Load with skipped components
-        METADATA   // Load only metadata
+        FULL,
+        LIGHT,
+        METADATA
     }
 }

@@ -46,13 +46,13 @@ class CollectorToggleButton(
             }
         }
 
-    // Used to animate the handle between states.
+
     private var animation = 0f
 
-    // Time tracking for animation calculations.
+
     private var lastUpdate = System.currentTimeMillis()
 
-    // Tracks whether the mouse is hovering over the component.
+
     private var hovered = false
 
     /**
@@ -87,10 +87,10 @@ class CollectorToggleButton(
      * @param delta The partial tick time.
      */
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        // Update hover state based on the mouse position.
+
         hovered = contains(mouseX.toDouble(), mouseY.toDouble())
 
-        // Calculate the delta time and update the animation progress.
+
         val now = System.currentTimeMillis()
         val deltaTime = (now - lastUpdate) / 300f
         lastUpdate = now
@@ -101,7 +101,7 @@ class CollectorToggleButton(
             (animation - deltaTime).coerceAtLeast(0f)
         }
 
-        // Render the label if it exists.
+
         label?.let {
             context.drawTextWithShadow(
                 mc.textRenderer,
@@ -112,14 +112,14 @@ class CollectorToggleButton(
             )
         }
 
-        // Determine the starting X position of the toggle track.
+
         val toggleX = if (label != null) {
             x + mc.textRenderer.getWidth(label) + 10
         } else {
             x
         }
 
-        // Compute the track color based on the animation progress and hover state.
+
         val trackColor = Color(
             0.2f + (0.2f * animation),
             0.2f + (0.4f * animation),
@@ -127,7 +127,7 @@ class CollectorToggleButton(
             if (hovered) 0.9f else 0.8f
         )
 
-        // Render the toggle track as a rounded rectangle (pill shape).
+
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             trackColor,
@@ -137,25 +137,25 @@ class CollectorToggleButton(
             10f
         )
 
-        // --- Circular Handle Implementation ---
 
-        // Define the handle's diameter to be slightly smaller than the total height.
+
+
         val handleDiameter = height - 10
 
-        // Calculate the handle's x-position based on the animation progress.
-        // The handle moves from toggleX to (toggleX + width - handleDiameter).
+
+
         val handleX = toggleX + (animation * (width - handleDiameter))
 
-        // Center the handle vertically within the toggle button.
+
         val handleY = y + (height - handleDiameter) / 2
 
-        // Choose the handle color based on whether the component is hovered.
+
         val handleColor = if (hovered)
             Color(1f, 1f, 1f, 0.9f)
         else
             Color(0.9f, 0.9f, 0.9f, 0.8f)
 
-        // Render the handle as a rounded rectangle with a corner radius that makes it a circle.
+
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             handleColor,
@@ -165,7 +165,7 @@ class CollectorToggleButton(
             10f
         )
 
-        // If the component is hovered and a description is provided, render the tooltip.
+
         if (hovered && description != null) {
             context.drawTooltip(
                 mc.textRenderer,

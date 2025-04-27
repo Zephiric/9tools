@@ -67,9 +67,9 @@ interface UIComponent {
         fun renderLabel(context: DrawContext, defaultOffsetX: Double, defaultOffsetY: Double)
     }
 
-    // ------------------------------------------------------------------------
-    //                            Rendering
-    // ------------------------------------------------------------------------
+
+
+
 
     /**
      * Renders this component to the screen.
@@ -81,9 +81,9 @@ interface UIComponent {
      */
     fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float)
 
-    // ------------------------------------------------------------------------
-    //                            Mouse Events
-    // ------------------------------------------------------------------------
+
+
+
 
     /**
      * Called when a mouse click event occurs.
@@ -129,9 +129,9 @@ interface UIComponent {
      */
     fun onMouseRelease(mouseX: Double, mouseY: Double, button: Int): Boolean = false
 
-    // ------------------------------------------------------------------------
-    //                            Keyboard Events
-    // ------------------------------------------------------------------------
+
+
+
 
     /**
      * Called when a key is pressed while this UI is active.
@@ -160,9 +160,9 @@ interface UIComponent {
      */
     fun onCharTyped(chr: Char, modifiers: Int): Boolean = false
 
-    // ------------------------------------------------------------------------
-    //                           Utility Methods
-    // ------------------------------------------------------------------------
+
+
+
 
     /**
      * Checks if the given coordinates are inside this component.

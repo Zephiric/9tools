@@ -27,17 +27,17 @@ class ItemEditScreen(
     private val onSave: ((CollectorItem) -> Unit)? = null
 ) : BaseCollectorScreen(Text.literal("Edit Item")) {
 
-    // ----------------------------------------
-    //            Data Model
-    // ----------------------------------------
+
+
+
     private var customName = item.customName
     private var givenBy = item.givenBy
     private var location = item.location
     private var description = item.description ?: ""
 
-    // ----------------------------------------
-    //     Screen geometry & abstract overrides
-    // ----------------------------------------
+
+
+
     private var screenX = 100.0
     private var screenY = 100.0
     private var screenWidth = 300.0
@@ -55,9 +55,9 @@ class ItemEditScreen(
         updateComponentPositions()
     }
 
-    // ----------------------------------------
-    //         UI Components (Buttons & TextBoxes)
-    // ----------------------------------------
+
+
+
 
     private lateinit var saveButton: CollectorButton
     private lateinit var backButton: CollectorButton
@@ -101,7 +101,7 @@ class ItemEditScreen(
             x = screenX + screenWidth - 85,
             y = screenY + screenHeight - 40
         ) {
-            // Placeholder for actual implementation
+
             ninehack.logChat("Components button clicked for item: ${item.customName}")
         }
     }
@@ -206,9 +206,9 @@ class ItemEditScreen(
         buildComponentsList()
     }
 
-    // ----------------------------------------
-    //             Rendering
-    // ----------------------------------------
+
+
+
     override fun renderScaled(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
             renderBackground(context, screenX, screenY, screenWidth, screenHeight)
             renderTitleBar(context, screenX, screenY, screenWidth, "Edit Item")
@@ -230,7 +230,7 @@ class ItemEditScreen(
         val previewSize = 20
         val padding = 2
 
-        // Gray background
+
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             Color(0.2f, 0.2f, 0.2f, 0.8f),
@@ -242,7 +242,7 @@ class ItemEditScreen(
             10f
         )
 
-        // Draw the item with all components
+
         val stack = CollectorItem.toItemStack(item)
         context.drawItem(
             stack,
@@ -250,7 +250,7 @@ class ItemEditScreen(
             (previewY + padding).toInt()
         )
 
-        // Tooltip hover area
+
         val hoverLeft = previewX + 1
         val hoverRight = previewX + previewSize
         val hoverTop = previewY + 1
@@ -264,9 +264,9 @@ class ItemEditScreen(
         }
     }
 
-    // ----------------------------------------
-    //             Utility Methods
-    // ----------------------------------------
+
+
+
 
     /**
      * Saves the changes made to the item and updates the collection.

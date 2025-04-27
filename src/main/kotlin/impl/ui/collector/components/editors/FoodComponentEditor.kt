@@ -10,7 +10,7 @@ import impl.ui.collector.utils.CollectorSlider
 import impl.ui.collector.utils.CollectorToggleButton
 import java.util.ArrayList
 
-// TODO: Full Refactor. Requires an effects manager
+
 
 class FoodComponentEditor(
     registry: EditorRegistry,

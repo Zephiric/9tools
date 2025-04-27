@@ -25,17 +25,17 @@ class CollectorTextBox(
     private val onChange: (String) -> Unit
 ) : UIComponent {
 
-    // Internal state
+
     private var text = initialText.take(maxLength)
     private var focused = false
     private var cursorPos = text.length.coerceAtMost(maxLength)
     private var selectionStart: Int? = null
 
-    // Label positioning
+
     private var labelOffsetX: Double? = null
     private var labelOffsetY: Double? = null
 
-    // For handling double/triple clicks
+
     private var lastClickTime = 0L
     private var clickCount = 0
 
@@ -55,14 +55,14 @@ class CollectorTextBox(
      * Renders the text box, including background, text, selection, and cursor.
      */
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        // Validate cursor position and selection
+
         cursorPos = cursorPos.coerceIn(0, text.length)
         selectionStart = selectionStart?.coerceIn(0, text.length)
 
-        // Render label if present
+
         renderLabel(context)
 
-        // Render background
+
         val bgColor = if (focused) {
             Color(0.25f, 0.25f, 0.25f, 0.8f)
         } else {
@@ -77,7 +77,7 @@ class CollectorTextBox(
             10f
         )
 
-        // Determine text to display
+
         val displayText = if (text.isEmpty() && !focused) placeholder else text
         val textColor = if (text.isEmpty() && !focused) {
             Color(0.5f, 0.5f, 0.5f, 0.7f).rgb
@@ -85,7 +85,7 @@ class CollectorTextBox(
             Color(1f, 1f, 1f, 0.9f).rgb
         }
 
-        // Render text
+
         context.drawTextWithShadow(
             mc.textRenderer,
             displayText,
@@ -94,7 +94,7 @@ class CollectorTextBox(
             textColor
         )
 
-        // Render text selection background if we have a valid selection
+
         if (focused && selectionStart != null && selectionStart != cursorPos) {
             val selStart = min(selectionStart!!, cursorPos).coerceIn(0, text.length)
             val selEnd = max(selectionStart!!, cursorPos).coerceIn(0, text.length)
@@ -114,7 +114,7 @@ class CollectorTextBox(
             }
         }
 
-        // Render blinking cursor
+
         if (focused && (System.currentTimeMillis() / 500) % 2L == 0L) {
             val cursorText = text.substring(0, cursorPos.coerceIn(0, text.length))
             val cursorX = x + 5 + mc.textRenderer.getWidth(cursorText)
@@ -133,7 +133,7 @@ class CollectorTextBox(
     private fun renderLabel(context: DrawContext) {
         label?.let {
             if (labelOffsetX != null && labelOffsetY != null) {
-                // Custom position
+
                 context.drawTextWithShadow(
                     mc.textRenderer,
                     it,
@@ -142,7 +142,7 @@ class CollectorTextBox(
                     Color(1f, 1f, 1f, 0.9f).rgb
                 )
             } else {
-                // Default position (above the text box)
+
                 context.drawTextWithShadow(
                     mc.textRenderer,
                     it,
@@ -158,7 +158,7 @@ class CollectorTextBox(
      * Handles mouse click events to manage focus and cursor positioning.
      */
     override fun onClick(mouseX: Double, mouseY: Double, button: Int): Boolean {
-        if (button != 0) return false // Only handle left-click
+        if (button != 0) return false
 
         val wasFocused = focused
         focused = contains(mouseX, mouseY)
@@ -176,7 +176,7 @@ class CollectorTextBox(
                 2 -> selectWord()
                 3 -> selectAll()
                 else -> {
-                    // Single click: position cursor
+
                     val relativeX = mouseX - (x + 5)
                     cursorPos = getCursorPosFromX(relativeX)
                     selectionStart = null
@@ -184,7 +184,7 @@ class CollectorTextBox(
             }
             return true
         } else {
-            // Clicking outside unfocuses the text box
+
             selectionStart = null
             return wasFocused
         }
@@ -267,7 +267,7 @@ class CollectorTextBox(
      */
     override fun onCharTyped(chr: Char, modifiers: Int): Boolean {
         if (!focused) return false
-        // Allow printable characters
+
         if (chr.isLetterOrDigit() || chr.isWhitespace() || chr in setOf('-', '_', '.', ',', '!', '?')) {
             if (text.length < maxLength) {
                 val newText = text.substring(0, cursorPos) + chr + text.substring(cursorPos)
@@ -284,7 +284,7 @@ class CollectorTextBox(
      * Handles mouse release events. Can be used to finalize text selection.
      */
     override fun onMouseRelease(mouseX: Double, mouseY: Double, button: Int): Boolean {
-        // Currently, no specific action needed on mouse release
+
         return false
     }
 

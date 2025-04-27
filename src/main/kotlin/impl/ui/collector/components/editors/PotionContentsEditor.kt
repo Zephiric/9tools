@@ -205,7 +205,7 @@ class PotionContentsEditor(
         effectTypeDropdown = UIDropdown(
             x = x + 5.0,
             y = y + 50.0,
-            width = 119.0, //smile
+            width = 119.0,
             height = 20.0,
             label = "Effect",
             maxVisibleItems = 10,
@@ -501,9 +501,9 @@ class PotionContentsEditor(
 
     private fun getEffectColor(effect: StatusEffect): Int {
         return when {
-            effect.isBeneficial -> 0x7FB8A4  //
-            effect.isInstant -> 0xE49A9A    // FIX THIS (SHOULD BE HARMFUL)
-            else -> 0xFFFFFF                //
+            effect.isBeneficial -> 0x7FB8A4
+            effect.isInstant -> 0xE49A9A
+            else -> 0xFFFFFF
         }
     }
 
@@ -511,7 +511,7 @@ class PotionContentsEditor(
         if (mouseX >= x + width - 200 && mouseX <= x + width - 5 &&
             mouseY >= y + 5 && mouseY <= y + 180) {
 
-            val relativeY = mouseY - (y + 5) // this is bad
+            val relativeY = mouseY - (y + 5)
             val effectIndex = (relativeY / 16).toInt() + scrollOffset
 
             if (effectIndex >= 0 && effectIndex < customEffects.size) {

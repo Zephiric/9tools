@@ -17,7 +17,7 @@ import impl.ui.collector.utils.CollectorToggleButton
 import impl.ui.collector.utils.UIDropdown
 import java.awt.Color
 
-// This editor will need to use either a right click menu for effect/entity/block presets or it will quickly get out of hand.
+
 
 class ChargedProjectilesEditor(
     registry: EditorRegistry,
@@ -84,7 +84,7 @@ class ChargedProjectilesEditor(
             Items.TIPPED_ARROW,
             Items.SPECTRAL_ARROW,
             Items.FIREWORK_ROCKET,
-            //This has to be a joke right...
+
             Items.DIRT,
             Items.LEATHER_BOOTS,
             Items.LEATHER_HELMET,
@@ -92,7 +92,7 @@ class ChargedProjectilesEditor(
             Items.LEATHER_LEGGINGS,
             Items.WOODEN_HOE,
             Items.BLACK_SHULKER_BOX
-            //Imagine running around at spawn and shooting shitkits at new players
+
         )
 
         projectileTypeDropdown = UIDropdown(

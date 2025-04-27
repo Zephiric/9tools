@@ -7,7 +7,7 @@ import impl.ui.collector.components.EditorRegistry
 import win.ninegang.ninetools.impl.ui.collector.utils.CollectorTextBox
 import impl.ui.collector.utils.CollectorToggleButton
 
-// a tiny bit wonky right now, specifically on the repeated addition and removal of the editor in the screen. It will not remember what the input from the user was.
+
 
 class ContainerLockEditor(
     registry: EditorRegistry,

@@ -7,7 +7,7 @@ import win.ninegang.ninetools.compat.util.Wrapper.mc
 import impl.ui.collector.UIComponent
 import java.awt.Color
 
-// this sucks
+
 
 class CollectorSearchBar(
     override var x: Double,
@@ -24,7 +24,7 @@ class CollectorSearchBar(
     private var showSuggestions = false
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        // Background
+
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             Color(0.2f, 0.2f, 0.2f, 0.8f),
@@ -33,7 +33,7 @@ class CollectorSearchBar(
             3f, 10f
         )
 
-        // Search icon
+
         context.drawTextWithShadow(
             mc.textRenderer,
             "🔍",
@@ -42,7 +42,7 @@ class CollectorSearchBar(
             Color(0.7f, 0.7f, 0.7f, 0.9f).rgb
         )
 
-        // Placeholder or user text
+
         val displayText = if (text.isEmpty() && !focused) "Search..." else text
         val color = if (text.isEmpty() && !focused) {
             Color(0.5f, 0.5f, 0.5f, 0.7f).rgb
@@ -57,7 +57,7 @@ class CollectorSearchBar(
             color
         )
 
-        // Cursor
+
         if (focused && (System.currentTimeMillis() % 1000 < 500)) {
             val cursorX = x + 25 + mc.textRenderer.getWidth(text.substring(0, cursorPos))
             win.ninegang.ninetools.compat.util.render.Engine2d.renderQuad(
@@ -68,7 +68,7 @@ class CollectorSearchBar(
             )
         }
 
-        // Suggestions
+
         if (showSuggestions && text.isNotEmpty()) {
             val suggestions = getSuggestions(text).take(5)
             if (suggestions.isNotEmpty()) {
@@ -130,7 +130,7 @@ class CollectorSearchBar(
             }
             GLFW.GLFW_KEY_LEFT -> if (cursorPos > 0) cursorPos--
             GLFW.GLFW_KEY_RIGHT -> if (cursorPos < text.length) cursorPos++
-            // You might want to handle ENTER, ESC, etc.
+
             else -> return false
         }
         return true
@@ -142,7 +142,7 @@ class CollectorSearchBar(
     override fun onCharTyped(chr: Char, modifiers: Int): Boolean {
         if (!focused) return false
 
-        // Basic filter (letters/digits/spaces)
+
         if (chr.isLetterOrDigit() || chr.isWhitespace()) {
             text = text.substring(0, cursorPos) + chr + text.substring(cursorPos)
             cursorPos++

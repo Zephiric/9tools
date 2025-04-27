@@ -32,28 +32,28 @@ object NineComponentEditorFactory {
         "minecraft:rarity" to NineComponentEditorFactory::createRarityEditor,
         "minecraft:max_damage" to NineComponentEditorFactory::createMaxDamageEditor,
         "minecraft:damage" to NineComponentEditorFactory::createDamageEditor,
-        //  "minecraft:enchantments" to ::createEnchantmentsEditor,
-        //   "minecraft:stored_enchantments" to ::createStoredEnchantmentsEditor,
+
+
         "minecraft:hide_additional_tooltip" to NineComponentEditorFactory::createHideAdditionalTooltipEditor,
         "minecraft:hide_tooltip" to NineComponentEditorFactory::createHideTooltipEditor,
         "minecraft:intangible_projectile" to NineComponentEditorFactory::createIntangibleProjectileEditor,
         "minecraft:fire_resistant" to NineComponentEditorFactory::createFireResistantEditor,
         "minecraft:creative_slot_lock" to NineComponentEditorFactory::createCreativeSlotLockEditor,
         "minecraft:repair_cost" to NineComponentEditorFactory::createRepairCostEditor,
-        //  "minecraft:food" to ::createFoodComponentEditor,
+
         "minecraft:base_color" to NineComponentEditorFactory::createBaseColorEditor,
-        //  "minecraft:dyed_color" to ::createDyedColorEditor,
+
         "minecraft:map_color" to NineComponentEditorFactory::createMapColorEditor,
         "minecraft:map_id" to NineComponentEditorFactory::createMapIdEditor,
-        //  "minecraft:map_decorations" to ::createMapDecorationsEditor,
+
         "minecraft:map_post_processing" to NineComponentEditorFactory::createMapPostProcessingEditor,
         "minecraft:lore" to NineComponentEditorFactory::createLoreEditor,
-        //  "minecraft:potion_contents" to ::createPotionContentsEditor,
+
         "minecraft:suspicious_stew_effects" to NineComponentEditorFactory::createSuspiciousStewEditor,
         "minecraft:charged_projectiles" to NineComponentEditorFactory::createChargedProjectilesEditor,
-        //  "minecraft:custom_model_data" to ::createCustomModelDataEditor,
-        // "minecraft:lock" to ::createContainerLockEditor,
-        //"minecraft:instrument" to ::createInstrumentEditor,
+
+
+
         )
 
     fun createEditor(

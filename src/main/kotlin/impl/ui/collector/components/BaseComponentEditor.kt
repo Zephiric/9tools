@@ -21,10 +21,10 @@ abstract class BaseComponentEditor(
     override var width: Double = STANDARD_WIDTH
     override var height: Double = STANDARD_HEIGHT
 
-    // List of UI components managed by this editor
+
     protected val editorComponents = mutableListOf<UIComponent>()
 
-    // Matches component editor to component type
+
     abstract val componentType: String
 
     private lateinit var _item: CollectorItem

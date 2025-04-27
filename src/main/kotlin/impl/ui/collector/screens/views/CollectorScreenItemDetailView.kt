@@ -76,12 +76,12 @@ class CollectorScreenItemDetailView(
             initializeTagGrids(item)
         }
 
-        // Background
+
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             Color(0.2f, 0.2f, 0.2f, 0.0f),
             x,
-            y + 20, // Ugly UI design needs fixing
+            y + 20,
             x + width,
             y + height,
             3f,
@@ -255,7 +255,7 @@ class CollectorScreenItemDetailView(
     }
 
 
-    // TODO: FIX BUTTON ALIGNMENT WHEN REWORKING SCREEN || UPDATE: IM SO SORRY
+
     private fun initializeButtons() {
         buttons["back"] = CollectorButton.createBackButton(
             x = x + 3,
@@ -504,7 +504,7 @@ class CollectorScreenItemDetailView(
             val words = item.description.split(" ")
             var wordIndex = 0
 
-            // Welcome to china
+
             while (wordIndex < words.size) {
                 val word = words[wordIndex]
                 val wordWidth = mc.textRenderer.getWidth(word)

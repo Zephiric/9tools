@@ -19,7 +19,7 @@ import impl.ui.collector.utils.UIDropdown
 import impl.ui.collector.utils.SelectableGrid
 import java.awt.Color
 
-// NEED FULL REWORK
+
 
 class MapDecorationsEditor(
     registry: EditorRegistry,

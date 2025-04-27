@@ -21,7 +21,7 @@ class DyedColorEditor(
     override val componentType: String = "minecraft:dyed_color"
 
     private val customHeight = 110.0
-    private val defaultRgb = DyedColorComponent.DEFAULT_COLOR // -6265536 is the default
+    private val defaultRgb = DyedColorComponent.DEFAULT_COLOR
     private var currentRgb: Int = initialValue?.rgb() ?: defaultRgb
     private var showInTooltip: Boolean = initialValue?.showInTooltip() ?: true
     private var isEnabled: Boolean = initialValue != null

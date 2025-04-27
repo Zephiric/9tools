@@ -37,7 +37,7 @@ class ListView : CollectionView() {
             val renderY = y + currentY
 
             if (currentY + itemHeight >= scrollOffset && currentY <= scrollOffset + height) {
-                // Background
+
                 win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
                     context.matrices,
                     Color(0.2f, 0.2f, 0.2f, 0.8f),
@@ -49,11 +49,11 @@ class ListView : CollectionView() {
                     10f
                 )
 
-                // Item icon
+
                 val stack = CollectorItem.toItemStack(item)
                 context.drawItem(stack, (x + 5).toInt(), (renderY + 5).toInt())
 
-                // Item name and type
+
                 val nameX = (x + 35).toInt()
                 val nameY = (renderY + 5).toInt()
 
@@ -74,7 +74,7 @@ class ListView : CollectionView() {
                     0x999999
                 )
 
-                // Right-aligned info
+
                 val dateStr = dateFormat.format(Date(item.dateReceived))
                 val rightSideInfo = "Given by: ${item.givenBy} | ${dateStr}"
                 context.drawTextWithShadow(
@@ -85,7 +85,7 @@ class ListView : CollectionView() {
                     0x999999
                 )
 
-                // Components info
+
                 val componentInfo = if (!item.components.isEmpty) {
                     val count = item.components.size()
                     "Has ${count} component${if (count > 1) "s" else ""}"
@@ -101,7 +101,7 @@ class ListView : CollectionView() {
                     0x666666
                 )
 
-                // Handle hover highlight and state
+
                 if (isMouseOver(mouseX.toDouble(), (mouseY + scrollOffset), currentY)) {
                     win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedOutline(
                         context.matrices,

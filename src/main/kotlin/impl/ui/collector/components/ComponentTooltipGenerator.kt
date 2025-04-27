@@ -32,26 +32,26 @@ object TooltipHandler {
         val tooltipContext = createTooltipContext()
         val tooltipType = determineTooltipType()
 
-        // Get the base tooltip
+
         val tooltipLines = stack.getTooltip(tooltipContext, mc.player, tooltipType).toMutableList()
 
-        // Check if we need to fix the name formatting at index 0
+
         if (tooltipLines.isNotEmpty() && stack.contains(DataComponentTypes.CUSTOM_NAME)) {
-            // Get the name and apply gold formatting while preserving other styles
+
             val customName = stack.getName()
             tooltipLines[0] = customName.copy().setStyle(
                 customName.style
                     .withColor(Formatting.GOLD)
-                    .withItalic(true) // Custom names are always italic
+                    .withItalic(true)
             )
         }
 
-        // Add collector info if present
+
         collectorItem?.let {
             addCollectorInfo(it, tooltipLines)
         }
 
-        // Add component details if appropriate
+
         if (shouldShowDetailedComponents(stack)) {
             addComponentDetails(stack, tooltipLines)
         }
@@ -70,7 +70,7 @@ object TooltipHandler {
      * Adds collector-specific information to tooltip
      */
     private fun addCollectorInfo(collectorItem: CollectorItem, tooltipLines: MutableList<Text>) {
-        tooltipLines.add(Text.empty()) // Separator
+        tooltipLines.add(Text.empty())
 
         tooltipLines.add(
             Text.literal("Collection Info")
@@ -97,7 +97,7 @@ object TooltipHandler {
                 .append(Text.literal(formattedDate).formatted(Formatting.DARK_GRAY))
         )
 
-        // Description with wrapping
+
         collectorItem.description?.let { desc ->
             if (desc.isNotEmpty()) {
                 tooltipLines.add(Text.empty())

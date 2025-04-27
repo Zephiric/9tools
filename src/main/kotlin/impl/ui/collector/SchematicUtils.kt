@@ -21,7 +21,7 @@ object SchematicUtils {
     fun readSchematic(file: File): SchematicData? {
         try {
             val inputStream = FileInputStream(file)
-            // Use NbtSizeTracker.ofUnlimitedBytes() instead of UNLIMITED
+
             val nbt = NbtIo.readCompressed(inputStream, NbtSizeTracker.ofUnlimitedBytes())
             inputStream.close()
 
@@ -123,7 +123,7 @@ object SchematicUtils {
         private val totalVolume: Int = Math.abs(sizeX) * Math.abs(sizeY) * Math.abs(sizeZ)
 
         init {
-            // Parse the palette
+
             val tempPalette = ArrayList<BlockState>()
             for (i in 0 until paletteTag.size) {
                 val blockTag = paletteTag.getCompound(i)
@@ -132,7 +132,7 @@ object SchematicUtils {
             }
             palette = tempPalette.toTypedArray()
 
-            // Calculate bits needed per block ID
+
             bitsPerEntry = maxOf(2, 32 - Integer.numberOfLeadingZeros(palette.size - 1))
             entriesPerLong = 64 / bitsPerEntry
             maxEntryValue = (1L shl bitsPerEntry) - 1L
@@ -143,7 +143,7 @@ object SchematicUtils {
          * Now correctly handles all coordinate ranges
          */
         fun getBlock(x: Int, y: Int, z: Int): BlockState {
-            // Validate coordinates against absolute dimensions
+
             if (x < 0 || x >= Math.abs(sizeX) ||
                 y < 0 || y >= Math.abs(sizeY) ||
                 z < 0 || z >= Math.abs(sizeZ)) {
@@ -152,7 +152,7 @@ object SchematicUtils {
 
             val index = getIndex(x, y, z)
 
-            // Validate index against data
+
             if (index < 0 || index >= totalVolume) {
                 return Blocks.AIR.defaultState
             }
@@ -192,7 +192,7 @@ object SchematicUtils {
             val bitIndex = index * bitsPerEntry
             val startLongIndex = bitIndex / 64
 
-            // Validate array bounds
+
             if (startLongIndex >= blockStates.size) {
                 return 0
             }
@@ -200,14 +200,14 @@ object SchematicUtils {
             val startBitOffset = bitIndex % 64
             val endBitOffset = startBitOffset + bitsPerEntry
 
-            // If the value is contained within a single long
+
             return if (endBitOffset <= 64) {
                 ((blockStates[startLongIndex] ushr startBitOffset) and maxEntryValue).toInt()
             } else {
-                // Value spans two longs
+
                 val endLongIndex = startLongIndex + 1
 
-                // Check if the second long exists
+
                 if (endLongIndex >= blockStates.size) {
                     return ((blockStates[startLongIndex] ushr startBitOffset) and maxEntryValue).toInt()
                 }

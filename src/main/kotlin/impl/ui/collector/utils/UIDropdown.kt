@@ -28,7 +28,7 @@ class UIDropdown(
     var currentSelection: String = ""
     private var scrollOffset = 0
 
-    // Items for the dropdown
+
     var items: List<String> = listOf()
         set(value) {
             field = value
@@ -36,20 +36,20 @@ class UIDropdown(
         }
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        // Check hover on the collapsed area
+
         isHovered = isMouseOverMain(mouseX.toDouble(), mouseY.toDouble())
 
-        // ─────────────────────────────────────────────────────────────────────────
-        // STEP 1: Push matrix to shift rendering "above" minecraft item icons.
-        // ─────────────────────────────────────────────────────────────────────────
+
+
+
         context.matrices.push()
-        // Translate forward in Z so we appear on top of item renders
+
         context.matrices.translate(0f, 0f, 300f)
 
-        // Draw the collapsed portion
+
         var dropdownX = x
         label?.let {
-            // Render label text
+
             context.drawTextWithShadow(
                 mc.textRenderer,
                 it,
@@ -98,23 +98,23 @@ class UIDropdown(
             Color.WHITE.rgb
         )
 
-        // Optional tooltip
+
         if (isHovered && tooltipText != null) {
             val lines = tooltipText.split("\n").map { net.minecraft.text.Text.literal(it) }
             context.drawTooltip(mc.textRenderer, lines, mouseX, mouseY)
         }
 
-        // If open, draw expanded list on top
+
         if (isOpen) {
             renderDropdownList(context, dropdownX, items, mouseX, mouseY, delta)
         } else {
-            // Clear old delete buttons if closed
+
             buttons.clear()
         }
 
-        // ─────────────────────────────────────────────────────────────────────────
-        // STEP 2: Pop the matrix so subsequent renders are not forced above
-        // ─────────────────────────────────────────────────────────────────────────
+
+
+
         context.matrices.pop()
     }
 
@@ -122,20 +122,20 @@ class UIDropdown(
         if (button != 0) return false
 
         val dx = label?.let { x + mc.textRenderer.getWidth(it) + 10 } ?: x
-        // 1) Click on main collapsed box toggles open
+
         if (isMouseOverMain(mouseX, mouseY)) {
             isOpen = !isOpen
             return true
         }
 
-        // 2) If open, check items / delete button
+
         if (isOpen) {
             val effectiveVisible = getEffectiveVisibleItems(items.size)
             val visibleItems = items.drop(scrollOffset).take(effectiveVisible)
 
             visibleItems.forEachIndexed { index, item ->
                 val itemY = y + height + index * itemHeight
-                // If clicked item
+
                 if (isMouseOverItem(mouseX, mouseY, dx, itemY)) {
                     val actualIndex = scrollOffset + index
                     if (actualIndex < items.size) {
@@ -146,7 +146,7 @@ class UIDropdown(
                     }
                 }
 
-                // If clicked the delete button
+
                 buttons["delete_$item"]?.let { btn ->
                     if (btn.contains(mouseX, mouseY)) {
                         btn.onClick(mouseX, mouseY, button)
@@ -155,7 +155,7 @@ class UIDropdown(
                 }
             }
 
-            // 3) If clicked outside entire dropdown, close
+
             if (!isMouseOverDropdown(mouseX, mouseY, dx)) {
                 isOpen = false
                 buttons.clear()
@@ -237,7 +237,7 @@ class UIDropdown(
             }
         }
 
-        // Render up/down arrows if we can scroll
+
         val maxS = getMaxScroll()
         if (maxS > 0) {
             if (scrollOffset > 0) {

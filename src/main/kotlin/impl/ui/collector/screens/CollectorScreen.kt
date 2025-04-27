@@ -26,9 +26,9 @@ import impl.ui.collector.utils.UIDropdown
  */
 class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
 
-    // ------------------------------------------------------------------------
-    //  Screen geometry
-    // ------------------------------------------------------------------------
+
+
+
     private var screenX = 100.0
     private var screenY = 100.0
     private var screenWidth = 400.0
@@ -40,9 +40,9 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
     override fun getScreenHeight() = screenHeight
     override fun getScreenIdentifier(): String = "collector_screen"
 
-    // ------------------------------------------------------------------------
-    //  Pagination
-    // ------------------------------------------------------------------------
+
+
+
     private var currentPage = 0
     private val itemsPerPage: Int
         get() = SettingsManager.itemsPerPage
@@ -60,31 +60,31 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
             return items.subList(startIndex, endIndex).toList()
         }
 
-    // The currently loaded items from the active collection
+
     private val items: List<CollectorItem>
         get() = CollectorCollection.getCurrent()?.items ?: emptyList()
 
-    // The item currently in "detail" mode, or null.
+
     private var selectedItem: CollectorItem? = null
 
-    // For tooltip hover logic
+
     private var hoveredItem: CollectorItem? = null
     private var mouseHoverX = 0
     private var mouseHoverY = 0
 
-    // ------------------------------------------------------------------------
-    //  List Values
-    // ------------------------------------------------------------------------
+
+
+
 
 
 
     private var currentViewType = SettingsManager.defaultViewType
 
-    // View instances
+
     private val gridView = GridView()
     private val listView = ListView()
 
-    // Current view reference
+
     private val currentView: CollectionView
         get() = when (currentViewType) {
             ViewType.GRID -> gridView
@@ -111,11 +111,11 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         setupView(listView)
     }
 
-    // ------------------------------------------------------------------------
-    //  UI Elements
-    // ------------------------------------------------------------------------
 
-    // View switch button
+
+
+
+
     private val viewSwitchButton = CollectorButton(
         x = screenX + screenWidth - 130,
         y = screenY + 30,
@@ -133,7 +133,7 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         }
     )
 
-    // A dropdown for switching or deleting collections
+
     private val dropdown = UIDropdown(
         x = screenX + 5,
         y = screenY + 30,
@@ -152,10 +152,10 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         }
     )
 
-    // Some top bar buttons (newCollection, addItem, settings)
+
     private val controlButtons = mutableMapOf<String, CollectorButton>()
 
-    // Detail view for one item
+
     private val detailView = CollectorScreenItemDetailView(
         x = screenX,
         y = screenY,
@@ -201,7 +201,7 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         }
     )
 
-    // A label showing the current page near the bottom or top
+
     private val pageLabel = object : UIComponent {
         override var x = screenX + 180
         override var y = screenY + 285
@@ -230,7 +230,7 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         }
     }
 
-    // Buttons to go to prev/next page
+
     private val prevPageButton = CollectorButton(
         x = screenX + -5,
         y = screenY + 145,

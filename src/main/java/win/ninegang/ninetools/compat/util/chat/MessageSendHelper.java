@@ -18,7 +18,7 @@ public class MessageSendHelper {
                 Wrapper.mc.inGameHud.getChatHud().addMessage(Text.literal("[9tools] " + message));
             }
         } catch (Exception e) {
-            // Silently handle exceptions if the chat system isn't ready
+
         }
     }
 

@@ -35,7 +35,7 @@ class CollectorButton(
      * Renders the button with an optional hover effect.
      */
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        // Update hover state
+
         isHovered = contains(mouseX.toDouble(), mouseY.toDouble())
 
         val baseColor = when (type) {
@@ -46,7 +46,7 @@ class CollectorButton(
             ButtonType.NEW_COLLECTION -> Color(25, 25, 102, 204)
         }
 
-        // Brighten if hovered
+
         val buttonColor = if (isHovered) {
             Color(
                 (baseColor.red * 2f).coerceIn(0f, 255f).toInt(),
@@ -58,7 +58,7 @@ class CollectorButton(
             baseColor
         }
 
-        // Draw background
+
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             buttonColor,
@@ -70,7 +70,7 @@ class CollectorButton(
             10f
         )
 
-        // Draw text
+
         val textWidth = mc.textRenderer.getWidth(text)
         val textHeight = mc.textRenderer.fontHeight
         val textX = x + (width - textWidth) / 2
@@ -79,7 +79,7 @@ class CollectorButton(
         context.drawTextWithShadow(
             mc.textRenderer,
             text,
-            (textX + 1).toInt(),   // small offset
+            (textX + 1).toInt(),
             (textY + 1).toInt(),
             Color(1f, 1f, 1f, 0.9f).rgb
         )
@@ -89,7 +89,7 @@ class CollectorButton(
      * Called when a mouse click occurs. Return true if the click is consumed.
      */
     override fun onClick(mouseX: Double, mouseY: Double, button: Int): Boolean {
-        // Typically handle left-click (button == 0)
+
         if (button == 0 && contains(mouseX, mouseY)) {
             onClickAction()
             return true
@@ -108,9 +108,9 @@ class CollectorButton(
     override fun onScroll(mouseX: Double, mouseY: Double, amount: Double) = false
     override fun onKeyPress(keyCode: Int, scanCode: Int, modifiers: Int) = false
 
-    // ------------------------------------------------------------------------
-    //                   Factory Methods
-    // ------------------------------------------------------------------------
+
+
+
     companion object {
 
         fun createNewButton(x: Double, y: Double, onClick: () -> Unit): CollectorButton {
