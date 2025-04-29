@@ -78,10 +78,6 @@ class CollectorMaps {
                 val gson = GsonBuilder().setPrettyPrinting().create()
                 mapFile.writeText(gson.toJson(orderedJson))
 
-                ninehack.logChat(
-                    "Saved map ${mapId}" +
-                            (if (actualServerName != null) " from server $actualServerName" else "")
-                )
                 return true
             } catch (e: Exception) {
                 ninehack.logChat("Failed to save map ${mapId}: ${e.message}")

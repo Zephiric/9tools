@@ -82,7 +82,7 @@ class DisplaySettingsView(
         )
 
         var count = 0
-        val locationDesc = "Found at ${player.blockPos}"
+        val placeholderDescription = "Placeholder Description. Anything put here is likely to be overwritten one day"
 
         fun processItemFrame(entity: ItemFrameEntity) {
             if (!entity.containsMap()) return
@@ -90,10 +90,10 @@ class DisplaySettingsView(
             val mapIdComponent = entity.getMapId(entity.heldItemStack) ?: return
             val mapId = mapIdComponent.id
 
-            val coords = entity.blockPos
-            val name = "Map #$mapId (${coords.x}, ${coords.y}, ${coords.z})"
+            val mapItemStack = entity.getHeldItemStack()
+            val mapName = mapItemStack.name.string
 
-            if (CollectorMaps.saveMap(mapId, name, locationDesc)) {
+            if (CollectorMaps.saveMap(mapId, mapName, placeholderDescription)) {
                 count++
             }
         }

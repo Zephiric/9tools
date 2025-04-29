@@ -64,13 +64,13 @@ object CollectorServers {
         servers.add(
             ServerEntry(
                 tag = "2b2t",
-                serverIps = listOf("2b2t.org")
+                serverIps = listOf("connect.2b2t.org./50.114.4.34:25565")
             )
         )
         servers.add(
             ServerEntry(
                 tag = "constantiam",
-                serverIps = listOf("constantiam.net")
+                serverIps = listOf("connect.constantiam.net./91.107.201.59:25565")
             )
         )
         servers.add(
@@ -130,7 +130,7 @@ object CollectorServers {
         }
     }
 
-    fun getCurrentServerIp(): String? {
+    fun getCurrentServerIp(): String {
         val minecraft = mc
         if (minecraft.isIntegratedServerRunning) {
             return "local"
