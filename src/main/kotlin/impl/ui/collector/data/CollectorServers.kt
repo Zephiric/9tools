@@ -58,25 +58,25 @@ object CollectorServers {
         servers.add(
             ServerEntry(
                 tag = "9b9t",
-                serverIps = listOf("9b9t.com:25565", "9b9t.org:25565")
+                serverIps = listOf("9b9t.com./198.251.83.216:9001", "minecraft.9b9t.org./198.251.83.216:9001", "eu.9b9t.com/198.251.89.41:25565", "minecraft.2b2t.com./198.251.83.216:9001")
             )
         )
         servers.add(
             ServerEntry(
                 tag = "2b2t",
-                serverIps = listOf("2b2t.org:25565", "connect.2b2t.org:25565")
+                serverIps = listOf("2b2t.org")
             )
         )
         servers.add(
             ServerEntry(
                 tag = "constantiam",
-                serverIps = listOf("constantiam.net:25565")
+                serverIps = listOf("constantiam.net")
             )
         )
         servers.add(
             ServerEntry(
                 tag = "anarchadia",
-                serverIps = listOf("anarchadia.org:25565")
+                serverIps = listOf("anarchadia.org")
             )
         )
     }
@@ -136,38 +136,12 @@ object CollectorServers {
             return "local"
         }
 
-        val networkHandler = minecraft.networkHandler ?: return null
-        val connection = networkHandler.connection
+        val connection = minecraft.networkHandler?.connection
+        val addressString = connection?.address?.toString()
 
-        try {
-
-            val socketAddress = connection.address
-            if (socketAddress is java.net.InetSocketAddress) {
-                val inetAddress = socketAddress.address
-                val host = inetAddress.hostAddress
-                val port = socketAddress.port
-                return "$host:$port"
-            }
-
-            val addressString = connection.getAddressAsString(true)
-
-            if (addressString == "local" || addressString.isEmpty()) {
-                return "local"
-            }
-
-            if (addressString.contains("/")) {
-
-                val parts = addressString.split("/")
-                if (parts.size > 1 && parts[1].isNotEmpty()) {
-                    return parts[1]
-                }
-            }
-
-            return addressString
-        } catch (e: Exception) {
-
-            val addressString = connection.getAddressAsString(true)
-            return if (addressString == "local" || addressString.isEmpty()) "local" else addressString
+        return when {
+            addressString == null || addressString == "local" || addressString.isEmpty() -> "local"
+            else -> addressString.removePrefix("/") // Remove potential leading slash
         }
     }
 
