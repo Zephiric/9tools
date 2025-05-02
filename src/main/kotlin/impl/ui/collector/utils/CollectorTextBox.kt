@@ -25,16 +25,13 @@ class CollectorTextBox(
     private val onChange: (String) -> Unit
 ) : UIComponent {
 
-
     private var text = initialText.take(maxLength)
     private var focused = false
     private var cursorPos = text.length.coerceAtMost(maxLength)
     private var selectionStart: Int? = null
 
-
     private var labelOffsetX: Double? = null
     private var labelOffsetY: Double? = null
-
 
     private var lastClickTime = 0L
     private var clickCount = 0
@@ -59,9 +56,7 @@ class CollectorTextBox(
         cursorPos = cursorPos.coerceIn(0, text.length)
         selectionStart = selectionStart?.coerceIn(0, text.length)
 
-
         renderLabel(context)
-
 
         val bgColor = if (focused) {
             Color(0.25f, 0.25f, 0.25f, 0.8f)
@@ -77,14 +72,12 @@ class CollectorTextBox(
             10f
         )
 
-
         val displayText = if (text.isEmpty() && !focused) placeholder else text
         val textColor = if (text.isEmpty() && !focused) {
             Color(0.5f, 0.5f, 0.5f, 0.7f).rgb
         } else {
             Color(1f, 1f, 1f, 0.9f).rgb
         }
-
 
         context.drawTextWithShadow(
             mc.textRenderer,
@@ -93,7 +86,6 @@ class CollectorTextBox(
             (y + (height - mc.textRenderer.fontHeight) / 2).toInt(),
             textColor
         )
-
 
         if (focused && selectionStart != null && selectionStart != cursorPos) {
             val selStart = min(selectionStart!!, cursorPos).coerceIn(0, text.length)
@@ -113,7 +105,6 @@ class CollectorTextBox(
                 )
             }
         }
-
 
         if (focused && (System.currentTimeMillis() / 500) % 2L == 0L) {
             val cursorText = text.substring(0, cursorPos.coerceIn(0, text.length))

@@ -76,7 +76,6 @@ class CollectorScreenItemDetailView(
             initializeTagGrids(item)
         }
 
-
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             Color(0.2f, 0.2f, 0.2f, 0.0f),
@@ -254,8 +253,6 @@ class CollectorScreenItemDetailView(
         buttons["components"]?.setPosition(startX, startY)
     }
 
-
-
     private fun initializeButtons() {
         buttons["back"] = CollectorButton.createBackButton(
             x = x + 3,
@@ -263,8 +260,6 @@ class CollectorScreenItemDetailView(
         ) {
             onBack()
         }
-
-
 
         buttons["delete"] = CollectorButton.createDeleteButton(
             x = x + 119,
@@ -378,7 +373,6 @@ class CollectorScreenItemDetailView(
             tooltipHandler.renderTooltip(context, lines, mouseX, mouseY)
         }
     }
-
 
     fun renderItemInfo(context: DrawContext, item: CollectorItem) {
         var headerY = y + 6

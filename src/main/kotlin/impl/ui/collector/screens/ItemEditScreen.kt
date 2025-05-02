@@ -27,16 +27,10 @@ class ItemEditScreen(
     private val onSave: ((CollectorItem) -> Unit)? = null
 ) : BaseCollectorScreen(Text.literal("Edit Item")) {
 
-
-
-
     private var customName = item.customName
     private var givenBy = item.givenBy
     private var location = item.location
     private var description = item.description ?: ""
-
-
-
 
     private var screenX = 100.0
     private var screenY = 100.0
@@ -54,10 +48,6 @@ class ItemEditScreen(
         screenY = newY
         updateComponentPositions()
     }
-
-
-
-
 
     private lateinit var saveButton: CollectorButton
     private lateinit var backButton: CollectorButton
@@ -206,9 +196,6 @@ class ItemEditScreen(
         buildComponentsList()
     }
 
-
-
-
     override fun renderScaled(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
             renderBackground(context, screenX, screenY, screenWidth, screenHeight)
             renderTitleBar(context, screenX, screenY, screenWidth, "Edit Item")
@@ -230,7 +217,6 @@ class ItemEditScreen(
         val previewSize = 20
         val padding = 2
 
-
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             Color(0.2f, 0.2f, 0.2f, 0.8f),
@@ -242,14 +228,12 @@ class ItemEditScreen(
             10f
         )
 
-
         val stack = CollectorItem.toItemStack(item)
         context.drawItem(
             stack,
             (previewX + padding).toInt(),
             (previewY + padding).toInt()
         )
-
 
         val hoverLeft = previewX + 1
         val hoverRight = previewX + previewSize
@@ -263,9 +247,6 @@ class ItemEditScreen(
             TooltipHandler.renderTooltip(context, lines, mouseX, mouseY)
         }
     }
-
-
-
 
 
     /**

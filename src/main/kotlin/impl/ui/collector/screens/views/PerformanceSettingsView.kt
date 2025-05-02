@@ -26,11 +26,15 @@ class PerformanceSettingsView(
     }
 
     override fun setPosition(newX: Double, newY: Double) {
+        val deltaX = newX - x
+        val deltaY = newY - y
+
         x = newX
         y = newY
-        components[0].setPosition(x + 20, y + 40)
-        components[1].setPosition(x + 20, y + 80)
-        components[2].setPosition(x + 20, y + 120)
+
+        components.forEach { component ->
+            component.setPosition(component.x + deltaX, component.y + deltaY)
+        }
     }
 
     override fun onClick(mouseX: Double, mouseY: Double, button: Int): Boolean {

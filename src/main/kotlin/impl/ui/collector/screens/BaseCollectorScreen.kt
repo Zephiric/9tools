@@ -19,15 +19,10 @@ import java.awt.Color
 abstract class BaseCollectorScreen(title: Text) : Screen(title) {
 
     protected val tooltipHandler = TooltipHandler
-
-
     protected val components = mutableListOf<UIComponent>()
-
-
     protected var isWindowDragging = false
     protected var dragOffsetX = 0.0
     protected var dragOffsetY = 0.0
-
 
     protected abstract fun getScreenX(): Double
     protected abstract fun getScreenY(): Double
@@ -45,16 +40,12 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         }
     }
 
-
-
-
     override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
 
         if (button == 0) {
             val scale = UIScaling.getScale()
             val scaledMouseX = mouseX / scale
             val scaledMouseY = mouseY / scale
-
 
             val screenX = getScreenX()
             val screenY = getScreenY()
@@ -68,7 +59,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
                 return true
             }
 
-
             components
                 .sortedByDescending { it.priority }
                 .forEach { component ->
@@ -77,7 +67,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
                     }
                 }
         }
-
         return super.mouseClicked(mouseX, mouseY, button)
     }
 
@@ -104,15 +93,12 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
 
             val clampedX = newX.coerceIn(-windowWidth + 50.0, screenWidth - 50.0)
             val clampedY = newY.coerceIn(0.0, screenHeight - 50.0)
-
             updateScreenPosition(clampedX, clampedY)
-
 
             SettingsManager.saveScreenPosition(getScreenIdentifier(), clampedX, clampedY)
 
             return true
         }
-
         components
             .sortedByDescending { it.priority }
             .forEach { component ->
@@ -120,7 +106,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
                     return true
                 }
             }
-
         return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
     }
 
@@ -130,11 +115,9 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
             isWindowDragging = false
             return true
         }
-
         val scale = UIScaling.getScale()
         val scaledX = mouseX / scale
         val scaledY = mouseY / scale
-
 
         components
             .sortedByDescending { it.priority }
@@ -157,7 +140,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         val scaledMouseX = mouseX / scale
         val scaledMouseY = mouseY / scale
 
-
         components
             .sortedByDescending { it.priority }
             .forEach { component ->
@@ -168,9 +150,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
 
         return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount)
     }
-
-
-
 
     override fun keyReleased(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
         components
@@ -206,9 +185,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         return super.keyPressed(keyCode, scanCode, modifiers)
     }
 
-
-
-
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
 
         context.matrices.push()
@@ -235,8 +211,6 @@ abstract class BaseCollectorScreen(title: Text) : Screen(title) {
         UIScaling.unscale(context)
         context.matrices.pop()
     }
-
-
 
     protected open fun renderScaled(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
 

@@ -25,7 +25,6 @@ class SettingsScreen : BaseCollectorScreen(Text.literal("Settings")) {
     override fun getScreenHeight() = screenHeight
     override fun getScreenIdentifier(): String = "settings_screen"
 
-
     inner class SettingsLayout {
         private val categories = listOf("General", "Display", "Performance", "Advanced")
         private val categoryButtons = categories.mapIndexed { index, category ->
@@ -79,7 +78,6 @@ class SettingsScreen : BaseCollectorScreen(Text.literal("Settings")) {
             }
         }
     }
-
 
     private object ViewRegistry {
         private val views = mutableMapOf<String, (SettingsLayout) -> UIComponent>()

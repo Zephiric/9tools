@@ -26,9 +26,6 @@ import impl.ui.collector.utils.UIDropdown
  */
 class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
 
-
-
-
     private var screenX = 100.0
     private var screenY = 100.0
     private var screenWidth = 400.0
@@ -39,9 +36,6 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
     override fun getScreenWidth() = screenWidth
     override fun getScreenHeight() = screenHeight
     override fun getScreenIdentifier(): String = "collector_screen"
-
-
-
 
     private var currentPage = 0
     private val itemsPerPage: Int
@@ -60,37 +54,21 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
             return items.subList(startIndex, endIndex).toList()
         }
 
-
     private val items: List<CollectorItem>
         get() = CollectorCollection.getCurrent()?.items ?: emptyList()
 
-
     private var selectedItem: CollectorItem? = null
-
-
     private var hoveredItem: CollectorItem? = null
     private var mouseHoverX = 0
     private var mouseHoverY = 0
-
-
-
-
-
-
-
     private var currentViewType = SettingsManager.defaultViewType
-
-
     private val gridView = GridView()
     private val listView = ListView()
-
-
     private val currentView: CollectionView
         get() = when (currentViewType) {
             ViewType.GRID -> gridView
             ViewType.LIST -> listView
         }
-
 
     private fun setupViews() {
         val setupView = { view: CollectionView ->
@@ -111,11 +89,6 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         setupView(listView)
     }
 
-
-
-
-
-
     private val viewSwitchButton = CollectorButton(
         x = screenX + screenWidth - 130,
         y = screenY + 30,
@@ -132,7 +105,6 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
             updateComponentPositions()
         }
     )
-
 
     private val dropdown = UIDropdown(
         x = screenX + 5,
@@ -152,9 +124,7 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
         }
     )
 
-
     private val controlButtons = mutableMapOf<String, CollectorButton>()
-
 
     private val detailView = CollectorScreenItemDetailView(
         x = screenX,
@@ -190,8 +160,8 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
             }
         },
         onViewComponents = { item: CollectorItem ->
-            mc.setScreen(ItemEditScreen(item))
-            ninehack.logChat("Ninehack item component system disabled due to maintenance")
+            mc.setScreen(NineComponentScreen(item))
+            ninehack.logChat("Ninehack item component system is currently broken so don't expect it to do what you want")
         },
         onItemUpdated = { oldItem, newItem ->
             if (selectedItem == oldItem) {
@@ -200,7 +170,6 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
             updateComponentPositions()
         }
     )
-
 
     private val pageLabel = object : UIComponent {
         override var x = screenX + 180
@@ -229,7 +198,6 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
             y = newY
         }
     }
-
 
     private val prevPageButton = CollectorButton(
         x = screenX + -5,
@@ -383,8 +351,6 @@ class CollectorScreen : BaseCollectorScreen(Text.literal("Collector")) {
                 renderTooltipIfNeeded(context, hoveredItem, mouseHoverX, mouseHoverY)
             }
         }
-
-
 
     override fun close() {
         mc.setScreen(null)

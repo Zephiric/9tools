@@ -59,7 +59,6 @@ data class CollectorItem(
     companion object {
         const val CURRENT_VERSION = "0.1"
 
-
         val EXCLUDED_COMPONENTS = setOf<ComponentType<*>>()
 
         private val CAPTURE_ONLY_IF_MODIFIED = setOf(

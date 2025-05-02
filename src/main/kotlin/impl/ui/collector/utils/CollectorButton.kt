@@ -58,7 +58,6 @@ class CollectorButton(
             baseColor
         }
 
-
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             buttonColor,
@@ -69,7 +68,6 @@ class CollectorButton(
             2f,
             10f
         )
-
 
         val textWidth = mc.textRenderer.getWidth(text)
         val textHeight = mc.textRenderer.fontHeight
@@ -107,9 +105,6 @@ class CollectorButton(
 
     override fun onScroll(mouseX: Double, mouseY: Double, amount: Double) = false
     override fun onKeyPress(keyCode: Int, scanCode: Int, modifiers: Int) = false
-
-
-
 
     companion object {
 

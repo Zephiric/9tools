@@ -146,7 +146,6 @@ class SelectableGrid(
         return false
     }
 
-
     fun updateItemDescription(name: String, description: String) {
         items.find { it.name == name }?.description = description
     }

@@ -28,7 +28,6 @@ class UIDropdown(
     var currentSelection: String = ""
     private var scrollOffset = 0
 
-
     var items: List<String> = listOf()
         set(value) {
             field = value
@@ -38,18 +37,11 @@ class UIDropdown(
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
 
         isHovered = isMouseOverMain(mouseX.toDouble(), mouseY.toDouble())
-
-
-
-
         context.matrices.push()
-
         context.matrices.translate(0f, 0f, 300f)
-
 
         var dropdownX = x
         label?.let {
-
             context.drawTextWithShadow(
                 mc.textRenderer,
                 it,
@@ -65,8 +57,7 @@ class UIDropdown(
         } else {
             Color(0.2f, 0.2f, 0.2f, 0.8f)
         }
-
-        win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
+            Engine2d.renderRoundedQuad(
             context.matrices,
             bgColor,
             dropdownX, y,
@@ -98,12 +89,10 @@ class UIDropdown(
             Color.WHITE.rgb
         )
 
-
         if (isHovered && tooltipText != null) {
             val lines = tooltipText.split("\n").map { net.minecraft.text.Text.literal(it) }
             context.drawTooltip(mc.textRenderer, lines, mouseX, mouseY)
         }
-
 
         if (isOpen) {
             renderDropdownList(context, dropdownX, items, mouseX, mouseY, delta)
@@ -111,9 +100,6 @@ class UIDropdown(
 
             buttons.clear()
         }
-
-
-
 
         context.matrices.pop()
     }
@@ -127,7 +113,6 @@ class UIDropdown(
             isOpen = !isOpen
             return true
         }
-
 
         if (isOpen) {
             val effectiveVisible = getEffectiveVisibleItems(items.size)
@@ -146,7 +131,6 @@ class UIDropdown(
                     }
                 }
 
-
                 buttons["delete_$item"]?.let { btn ->
                     if (btn.contains(mouseX, mouseY)) {
                         btn.onClick(mouseX, mouseY, button)
@@ -154,7 +138,6 @@ class UIDropdown(
                     }
                 }
             }
-
 
             if (!isMouseOverDropdown(mouseX, mouseY, dx)) {
                 isOpen = false
@@ -197,7 +180,7 @@ class UIDropdown(
         val ddHeight = visibleItems.size * itemHeight
         val extraWidth = if (onDelete != null) 30.0 else 0.0
 
-        win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
+        Engine2d.renderRoundedQuad(
             context.matrices,
             Color(0.15f, 0.15f, 0.15f, 0.95f),
             dropdownX,
@@ -206,7 +189,6 @@ class UIDropdown(
             (y + height + ddHeight).coerceAtMost(y + maxDropdownHeight),
             2f, 10f
         )
-
         cleanupButtons(items)
 
         visibleItems.forEachIndexed { index, item ->
@@ -214,7 +196,7 @@ class UIDropdown(
             val hovered = isMouseOverItem(mouseX.toDouble(), mouseY.toDouble(), dropdownX, itemY)
 
             if (hovered) {
-                win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
+                Engine2d.renderRoundedQuad(
                     context.matrices,
                     Color(0.3f, 0.3f, 0.3f, 0.8f),
                     dropdownX, itemY,
@@ -236,7 +218,6 @@ class UIDropdown(
                 buttons["delete_$item"]?.render(context, mouseX, mouseY, delta)
             }
         }
-
 
         val maxS = getMaxScroll()
         if (maxS > 0) {

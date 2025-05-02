@@ -49,9 +49,7 @@ class CollectorToggleButton(
 
     private var animation = 0f
 
-
     private var lastUpdate = System.currentTimeMillis()
-
 
     private var hovered = false
 
@@ -90,7 +88,6 @@ class CollectorToggleButton(
 
         hovered = contains(mouseX.toDouble(), mouseY.toDouble())
 
-
         val now = System.currentTimeMillis()
         val deltaTime = (now - lastUpdate) / 300f
         lastUpdate = now
@@ -127,7 +124,6 @@ class CollectorToggleButton(
             if (hovered) 0.9f else 0.8f
         )
 
-
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
             trackColor,
@@ -137,24 +133,13 @@ class CollectorToggleButton(
             10f
         )
 
-
-
-
         val handleDiameter = height - 10
-
-
-
         val handleX = toggleX + (animation * (width - handleDiameter))
-
-
         val handleY = y + (height - handleDiameter) / 2
-
-
         val handleColor = if (hovered)
             Color(1f, 1f, 1f, 0.9f)
         else
             Color(0.9f, 0.9f, 0.9f, 0.8f)
-
 
         win.ninegang.ninetools.compat.util.render.Engine2d.renderRoundedQuad(
             context.matrices,
@@ -164,7 +149,6 @@ class CollectorToggleButton(
             (handleDiameter / 2).toFloat(),
             10f
         )
-
 
         if (hovered && description != null) {
             context.drawTooltip(

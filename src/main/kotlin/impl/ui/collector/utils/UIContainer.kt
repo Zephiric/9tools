@@ -23,8 +23,6 @@ class UIContainer(
     var scrollbarHoverColor: Color = Color(0.5f, 0.7f, 1f, 0.9f),
     var scaleOrigin: ScaleOrigin = ScaleOrigin.FIRST_COMPONENT,
 
-
-
 ) : UIComponent {
 
     enum class ScaleOrigin {

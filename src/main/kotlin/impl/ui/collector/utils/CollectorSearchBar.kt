@@ -33,7 +33,6 @@ class CollectorSearchBar(
             3f, 10f
         )
 
-
         context.drawTextWithShadow(
             mc.textRenderer,
             "🔍",
@@ -41,7 +40,6 @@ class CollectorSearchBar(
             (y + 8).toInt(),
             Color(0.7f, 0.7f, 0.7f, 0.9f).rgb
         )
-
 
         val displayText = if (text.isEmpty() && !focused) "Search..." else text
         val color = if (text.isEmpty() && !focused) {
@@ -67,7 +65,6 @@ class CollectorSearchBar(
                 cursorX + 1, y + 18
             )
         }
-
 
         if (showSuggestions && text.isNotEmpty()) {
             val suggestions = getSuggestions(text).take(5)

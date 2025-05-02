@@ -53,7 +53,7 @@ class GeneralSettingsView(
 
         components += CollectorToggleButton(
             x = x,
-            y = y + 20,
+            y = y + 50,
             width = 30.0,
             label = "Show Tooltips",
             description = "Show detailed item tooltips",
@@ -66,7 +66,7 @@ class GeneralSettingsView(
 
         components += CollectorToggleButton(
             x = x,
-            y = y + 40,
+            y = y + 100,
             width = 30.0,
             label = "Save Default",
             description = "Include default components in saved JSON even if unchanged (i suggest keeping this on)",
@@ -76,6 +76,9 @@ class GeneralSettingsView(
                 SettingsManager.saveSettings()
             }
         )
+        
+        components.getOrNull(1)?.setPosition(x, y + 50)
+        components.getOrNull(2)?.setPosition(x, y + 100)
     }
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
@@ -83,12 +86,15 @@ class GeneralSettingsView(
     }
 
     override fun setPosition(newX: Double, newY: Double) {
+        val deltaX = newX - x
+        val deltaY = newY - y
+
         x = newX
         y = newY
-        components[0].setPosition(x, y)
-        components[1].setPosition(x, y + 50)
-        components[2].setPosition(x, y + 100)
-        components[3].setPosition(x, y + 150)
+
+        components.forEach { component ->
+            component.setPosition(component.x + deltaX, component.y + deltaY)
+        }
     }
 
     override fun onScroll(mouseX: Double, mouseY: Double, amount: Double): Boolean {
